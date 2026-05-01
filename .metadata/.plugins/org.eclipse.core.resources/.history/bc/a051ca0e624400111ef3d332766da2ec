@@ -1,0 +1,50 @@
+package ThoughtWorks.SeleniumMarAir.Constant;
+import java.time.Duration;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
+
+public class HomePageConstants {
+	WebDriver driver;
+	ExtentTest test;
+	ExtentColor Color;
+	public static Logger log = LogManager.getLogger(HomePage.class.getName());
+			
+	public HomePage(WebDriver driver, ExtentTest test){
+		
+		this.driver=driver;
+		this.test=test;
+		PageFactory.initElements(driver, this);
+		
+	}
+	@FindBy(xpath="//div[@id=\"report_issue\"]")
+	WebElement reportIssue;
+
+public void ReportLink(String usernameText, String passWordText)
+{
+	try {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement reportAnIssue = wait.until(ExpectedConditions.visibilityOf(reportIssue));
+        Assert.assertTrue(reportAnIssue.getText().contains("Report an issue"));
+	//log.debug("UserName : Entered");
+	//test.log(Status.PASS, MarkupHelper.createLabel("UserName : Entered", ExtentColor.GREEN));
+	}
+	catch(Exception e){
+		//test.log(Status.PASS, MarkupHelper.createLabel("UserName Not Entered", ExtentColor.RED));
+		throw e;
+	}
+}
+}

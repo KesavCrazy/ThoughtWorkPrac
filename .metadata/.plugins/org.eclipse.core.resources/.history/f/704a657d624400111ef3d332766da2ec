@@ -1,0 +1,29 @@
+package ThoughtWorks.SeleniumMarAir.testcase;
+
+import org.testng.annotations.Test;
+
+
+import com.aventstack.extentreports.ExtentTest;
+
+import ThoughtWorks.SeleniumMarAir.Constant.HomePageConstants;
+import ThoughtWorks.SeleniumMarAir.Utility.BaseClass;
+/**
+ * @author Kesavaraj Gopalakrishnan
+ */
+
+public class HomePage extends BaseClass{
+	@Test
+	
+	
+public void LoginToServiceNowPortal() throws Exception{
+		
+		new HomePageConstants(driver, test).ReportLink(null, null);
+		
+		new LoginPage(driver, test).UserLogin("ey_kesavaraj_gopalakrishnan", "Kesav@1999..");
+		new ImpersonateUser(driver, test).ImpersonateTheUser("Change Manager");
+		new FilterNavigatorComponents(driver, test).All();
+		new FilterNavigatorComponents(driver, test).FilterNavigatorSearch("Incident");
+		new FilterNavigatorComponents(driver, test).CreateNew();
+	
+}
+}
