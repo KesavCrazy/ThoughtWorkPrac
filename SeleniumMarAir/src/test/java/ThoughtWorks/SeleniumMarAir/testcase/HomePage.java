@@ -19,10 +19,10 @@ public class HomePage extends BaseClass{
 public void HomePageValidation() throws Exception{
 		
 		new HomePageConstants(driver, test).ReportLink();
-		new HomePageConstants(driver, test).Departure();
-		new HomePageConstants(driver, test).Return();
+		new HomePageConstants(driver, test).Departure("July");
+		new HomePageConstants(driver, test).Return("2");
 		new HomePageConstants(driver, test).Search();
-		new searchResult(driver, test).NoSeatMessage();
+		new searchResult(driver, test).NoSeatMessage("Sorry, there are no more seats available.");
 	
 }
 }

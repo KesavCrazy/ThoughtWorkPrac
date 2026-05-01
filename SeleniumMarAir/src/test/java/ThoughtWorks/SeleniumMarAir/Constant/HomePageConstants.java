@@ -39,7 +39,7 @@ public class HomePageConstants {
 	WebElement departField;
 	@FindBy(xpath="//select[@id='returning']")
 	WebElement returnField;
-	@FindBy(css="input[value=\"Search\"]")
+	@FindBy(css="input[value='Search']")
 	WebElement searchButton;
 
 
@@ -61,25 +61,25 @@ public void ReportLink()
 	}
 }
 
-public void Departure()
+public void Departure(String month)
 {
 	try {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement departureDropdown = wait.until(ExpectedConditions.visibilityOf(departField));
         Select dropdown = new Select(departureDropdown);
-        dropdown.selectByVisibleText("July");
+        dropdown.selectByVisibleText(month);
 	}
 	catch(Exception e){
 		throw e;
 	}
 }
-public void Return()
+public void Return(String value)
 {
 	try {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement returnDropdown = wait.until(ExpectedConditions.visibilityOf(returnField));
         Select dropdown = new Select(returnDropdown);
-        dropdown.selectByValue("2");
+        dropdown.selectByValue(value);
 	}
 	catch(Exception e){
 		throw e;
